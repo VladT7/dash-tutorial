@@ -1,5 +1,5 @@
 from dash import Dash, html, dcc
-from . import ids
+from components import ids
 
 
 def render(app: Dash) -> html.Div:
@@ -67,6 +67,11 @@ def render(app: Dash) -> html.Div:
                 multi=True,
                 value=Region,
                 id=ids.REGION_DROPDOWN,
+            ),
+            html.Button(
+                className="dropdown-button",
+                children=["Select All"],
+                id=ids.SELECT_ALL_REGIONS,
             ),
         ]
     )
