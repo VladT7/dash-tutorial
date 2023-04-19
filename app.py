@@ -3,8 +3,10 @@ from dash import dcc
 from dash import html
 import pandas as pd
 
+from components import dropdown
+
 data = pd.read_csv("dash-tutorial/avocado.csv")
-data = data.query("type == 'organic' and region == 'Albany'")
+data = data.query("type == 'organic'")
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 
 data.sort_values(by="Date", inplace=True)
@@ -40,6 +42,10 @@ app.layout = html.Div(
                 ],
                 "layout": {"title": "Avocados sold"},
             },
+        ),
+        html.Div(
+            className="dropdown-container",
+            children=[dropdown.render(app)],
         ),
     ]
 )
